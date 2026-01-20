@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Multiplayer Bingo</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div class="container">
+    <header>
+      <h1>🎮 Multiplayer Bingo</h1>
+      <div id="gameInfo">
+        <span id="playerCount">Players: 0</span>
+        <span id="gameStatus">Waiting...</span>
+      </div>
+    </header>
+
+    <!-- Lobby Screen -->
+    <div id="lobby" class="screen active">
+      <div class="lobby-content">
+        <h2>Join a Game</h2>
+        <input type="text" id="playerName" placeholder="Enter your name" maxlength="20">
+        <input type="text" id="roomId" placeholder="Room ID (optional)" maxlength="20">
+        <button id="joinBtn" class="btn btn-primary">Join Game</button>
+      </div>
+    </div>
+
+    <!-- Game Screen -->
+    <div id="gameScreen" class="screen">
+      <div class="game-layout">
+        <!-- Bingo Card -->
+        <div class="card-section">
+          <div class="bingo-header">
+            <span>B</span>
+            <span>I</span>
+            <span>N</span>
+            <span>G</span>
+            <span>O</span>
+          </div>
+          <div id="bingoCard" class="bingo-card"></div>
+          <div class="game-controls">
+            <button id="bingoBtn" class="btn btn-success" disabled>BINGO!</button>
+            <button id="startBtn" class="btn btn-primary" style="display: none;">Start Game</button>
+            <button id="newGameBtn" class="btn btn-secondary" style="display: none;">New Game</button>
+          </div>
+        </div>
+
+        <!-- Called Numbers -->
+        <div class="sidebar">
+          <div class="current-number">
+            <h3>Current Number</h3>
+            <div id="currentNumber" class="number-display">--</div>
+          </div>
+          
+          <div class="called-numbers">
+            <h3>Called Numbers</h3>
+            <div id="calledNumbers" class="numbers-grid"></div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Winner Modal -->
+    <div id="winnerModal" class="modal">
+      <div class="modal-content">
+        <h2>🎉 BINGO! 🎉</h2>
+        <p id="winnerText"></p>
+        <button id="closeModal" class="btn btn-primary">Close</button>
+      </div>
+    </div>
+
+    <!-- Notification -->
+    <div id="notification" class="notification"></div>
+  </div>
+
+  <script src="/socket.io/socket.io.js"></script>
+  <script src="client.js"></script>
+</body>
+</html>
